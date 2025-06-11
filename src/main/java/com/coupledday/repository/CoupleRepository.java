@@ -1,6 +1,7 @@
 package com.coupledday.repository;
 
 import com.coupledday.domain.couple.Couple;
+import com.coupledday.domain.couple.CoupleStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

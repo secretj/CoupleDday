@@ -1,6 +1,7 @@
 package com.coupledday.repository;
 
 import com.coupledday.domain.dday.DdayEvent;
+import com.coupledday.domain.dday.EventStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

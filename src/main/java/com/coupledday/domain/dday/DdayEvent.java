@@ -1,5 +1,7 @@
 package com.coupledday.domain.dday;
 
+import com.coupledday.domain.couple.Couple;
+import com.coupledday.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

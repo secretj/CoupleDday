@@ -1,6 +1,7 @@
 package com.coupledday.service;
 
 import com.coupledday.domain.dday.DdayEvent;
+import com.coupledday.domain.dday.DdayType;
 import com.coupledday.repository.DdayEventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

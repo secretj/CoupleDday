@@ -1,7 +1,10 @@
 package com.coupledday.dto;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.Calendar;
 
 @Data
 @Builder

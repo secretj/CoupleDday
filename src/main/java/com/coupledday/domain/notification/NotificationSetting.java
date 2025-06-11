@@ -1,5 +1,7 @@
 package com.coupledday.domain.notification;
 
+import com.coupledday.domain.dday.DdayEvent;
+import com.coupledday.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,6 @@
 package com.coupledday.controller;
 
+import com.coupledday.domain.memory.CoupleMemory;
 import com.coupledday.dto.MemoryRequest;
 import com.coupledday.dto.MemoryResponse;
 import com.coupledday.service.MemoryService;
