@@ -1,5 +1,7 @@
 package com.coupledday.controller;
 
+import com.coupledday.domain.dday.DdayEvent; // 추가 필요
+import com.coupledday.dto.DdayCalculationResponse; // 추가 필요
 import com.coupledday.dto.DdayEventRequest;
 import com.coupledday.dto.DdayEventResponse;
 import com.coupledday.service.DdayEventService;

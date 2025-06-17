@@ -41,4 +41,18 @@ public class CoupleMemory {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public void setCoupleById(Long coupleId) {
+        if (coupleId != null) {
+            this.couple = new Couple();
+            this.couple.setId(coupleId);
+        }
+    }
+
+    public void setUserById(Long userId) {
+        if (userId != null) {
+            this.user = new User();
+            this.user.setId(userId);
+        }
+    }
 }

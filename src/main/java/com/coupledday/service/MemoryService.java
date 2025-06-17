@@ -25,8 +25,8 @@ public class MemoryService {
 
     public CoupleMemory createMemory(MemoryRequest request) {
         CoupleMemory memory = new CoupleMemory();
-        memory.setCoupleId(request.getCoupleId());
-        memory.setUserId(request.getUserId());
+        memory.setCoupleById(request.getCoupleId());
+        memory.setUserById(request.getUserId());
         memory.setTitle(request.getTitle());
         memory.setContent(request.getContent());
         memory.setMemoryDate(request.getMemoryDate());

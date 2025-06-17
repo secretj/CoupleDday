@@ -2,14 +2,12 @@ package com.coupledday.service;
 
 import com.coupledday.domain.dday.DdayEvent;
 import com.coupledday.domain.notification.NotificationSetting;
-import com.coupledday.domain.notification.NotificationType;
 import com.coupledday.repository.NotificationSettingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -60,7 +58,7 @@ public class NotificationService {
         String title = "💕 " + event.getTitle();
         String body = createNotificationMessage(event, daysRemaining, setting.getMessage());
 
-        fcmService.sendNotification(setting.getUser().getId(), title, body);
+        fcmService.sendMessageTo(setting.getUser().getId(), title, body);
     }
 
     private void sendSMSNotification(DdayEvent event, NotificationSetting setting, Long daysRemaining) {
