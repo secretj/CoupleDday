@@ -1,0 +1,67 @@
+services:
+  mysql:
+    image: mysql:8.0
+    env_file:
+      - .env
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_HOST: ${DB_HOST}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - dday-net
+    command: --default-authentication-plugin=mysql_native_password
+
+  redis:
+    image: redis:7
+    container_name: redis
+    env_file:
+      - .env
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    command: >
+      sh -c "redis-server --requirepass $REDIS_PASSWORD --appendonly yes"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - dday-net
+
+  app:
+    build: .
+    env_file:
+      - .env
+    container_name: couple_dday_app
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_USERNAME: secretj
+      DB_PASSWORD: ${DB_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/couple_dday
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    depends_on:
+      - mysql
+      - redis
+    restart: unless-stopped
+    networks:
+      - dday-net
+
+networks:
+  dday-net:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
