@@ -1,5 +1,8 @@
 package com.coupledday.domain.memory;
 
+import lombok.Getter;
+
+@Getter
 public enum MediaType {
     IMAGE("이미지", new String[]{"jpg", "jpeg", "png", "gif", "webp"}),
     VIDEO("비디오", new String[]{"mp4", "avi", "mov", "wmv", "flv"});
@@ -10,14 +13,6 @@ public enum MediaType {
     MediaType(String description, String[] allowedExtensions) {
         this.description = description;
         this.allowedExtensions = allowedExtensions;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String[] getAllowedExtensions() {
-        return allowedExtensions;
     }
 
     public boolean isValidExtension(String extension) {

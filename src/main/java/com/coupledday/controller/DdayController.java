@@ -17,6 +17,11 @@ public class DdayController {
 
     private final DdayEventService ddayEventService;
 
+    /**
+     * D-day 이벤트 생성
+     * @param request : DdayEventRequest 객체
+     * @return ResponseEntity<DdayEventResponse>
+     */
     @PostMapping
     public ResponseEntity<DdayEventResponse> createDdayEvent(@RequestBody DdayEventRequest request) {
         DdayEvent event = ddayEventService.createDdayEvent(
@@ -30,6 +35,11 @@ public class DdayController {
         return ResponseEntity.ok(DdayEventResponse.from(event));
     }
 
+    /**
+     * 커플의 활성화된 D-day 이벤트 조회
+     * @param coupleId : 커플 ID
+     * @return ResponseEntity<List<DdayEventResponse>>
+     */
     @GetMapping("/couple/{coupleId}")
     public ResponseEntity<List<DdayEventResponse>> getCoupleEvents(@PathVariable Long coupleId) {
         List<DdayEvent> events = ddayEventService.getActiveCoupleEvents(coupleId);
@@ -39,6 +49,11 @@ public class DdayController {
         return ResponseEntity.ok(responses);
     }
 
+    /**
+     * 커플의 D-day 이벤트 상세 조회
+     * @param coupleId : 커플 ID
+     * @return ResponseEntity<List<DdayEventResponse>>
+     */
     @GetMapping("/upcoming/{coupleId}")
     public ResponseEntity<List<DdayEventResponse>> getUpcomingEvents(
             @PathVariable Long coupleId,
@@ -51,6 +66,12 @@ public class DdayController {
         return ResponseEntity.ok(responses);
     }
 
+    /**
+     * 구글 캘린더 동기화
+     * @param eventId : D-day 이벤트 ID
+     * @param token : Authorization 헤더에서 Bearer 토큰
+     * @return ResponseEntity<Void>
+     */
     @PostMapping("/{eventId}/sync-calendar")
     public ResponseEntity<Void> syncWithGoogleCalendar(@PathVariable Long eventId,
                                                        @RequestHeader("Authorization") String token) {

@@ -1,5 +1,8 @@
 package com.coupledday.domain.dday;
 
+import lombok.Getter;
+
+@Getter
 public enum DdayType {
     ANNIVERSARY_FIRST("첫 만남", 0),
     ANNIVERSARY_100("100일", 100),
@@ -16,17 +19,5 @@ public enum DdayType {
     DdayType(String description, Integer defaultDays) {
         this.description = description;
         this.defaultDays = defaultDays;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Integer getDefaultDays() {
-        return defaultDays;
-    }
-
-    public boolean isCustomType() {
-        return this == CUSTOM;
     }
 }

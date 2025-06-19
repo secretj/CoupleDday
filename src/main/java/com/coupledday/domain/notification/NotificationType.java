@@ -1,5 +1,8 @@
 package com.coupledday.domain.notification;
 
+import lombok.Getter;
+
+@Getter
 public enum NotificationType {
     PUSH("푸시 알림"),
     EMAIL("이메일"),
@@ -11,7 +14,4 @@ public enum NotificationType {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
 }

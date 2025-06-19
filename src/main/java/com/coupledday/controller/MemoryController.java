@@ -17,12 +17,23 @@ public class MemoryController {
 
     private final MemoryService memoryService;
 
+    /**
+     * 커플 메모리 생성
+     * @param request : MemoryRequest 객체
+     * @return ResponseEntity<MemoryResponse>
+     */
     @PostMapping
     public ResponseEntity<MemoryResponse> createMemory(@RequestBody MemoryRequest request) {
         CoupleMemory memory = memoryService.createMemory(request);
         return ResponseEntity.ok(MemoryResponse.from(memory));
     }
 
+    /**
+     * 사진/영상 업로드
+     * @param memoryId : 메모리 ID
+     * @param files : 업로드할 파일
+     * @return ResponseEntity<MemoryResponse>
+     */
     @PostMapping("/{memoryId}/media")
     public ResponseEntity<Void> uploadMedia(@PathVariable Long memoryId,
                                             @RequestParam("files") List<MultipartFile> files) {
@@ -30,6 +41,11 @@ public class MemoryController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * 커플의 메모리 목록 조회
+     * @param coupleId : 커플 ID
+     * @return ResponseEntity<List<MemoryResponse>>
+     */
     @GetMapping("/couple/{coupleId}")
     public ResponseEntity<List<MemoryResponse>> getCoupleMemories(@PathVariable Long coupleId) {
         List<CoupleMemory> memories = memoryService.getCoupleMemories(coupleId);
