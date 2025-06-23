@@ -1,5 +1,8 @@
 package com.coupledday.domain.couple;
 
+import lombok.Getter;
+
+@Getter
 public enum CoupleStatus {
     ACTIVE("활성"),
     INACTIVE("비활성"),
@@ -12,7 +15,4 @@ public enum CoupleStatus {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
 }

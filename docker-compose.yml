@@ -23,10 +23,7 @@ services:
     container_name: redis
     env_file:
       - .env
-    environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-    command: >
-      sh -c "redis-server --requirepass $REDIS_PASSWORD --appendonly yes"
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}", "--appendonly", "yes"]
     ports:
       - "6379:6379"
     volumes:

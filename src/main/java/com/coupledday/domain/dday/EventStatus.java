@@ -1,5 +1,8 @@
 package com.coupledday.domain.dday;
 
+import lombok.Getter;
+
+@Getter
 public enum EventStatus {
     ACTIVE("활성"),
     COMPLETED("완료"),
@@ -11,7 +14,4 @@ public enum EventStatus {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
-    }
 }
